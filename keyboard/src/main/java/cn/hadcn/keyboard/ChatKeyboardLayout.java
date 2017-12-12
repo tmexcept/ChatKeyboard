@@ -555,6 +555,10 @@ public class ChatKeyboardLayout extends SoftHandleLayout implements EmoticonsTab
                     btnRecording.setText(getResources().getString(R.string.recording_end));
                     isCanceled = false;
                 }
+            } else if(motionEvent.getAction() == MotionEvent.ACTION_CANCEL){
+                btnRecording.setBackgroundResource(R.drawable.recording_n);
+                btnRecording.setText(getResources().getString(R.string.recording_start));
+                mOnChatKeyBoardListener.onRecordingAction(RecordingAction.CANCELED);
             }
             return false;
         }
