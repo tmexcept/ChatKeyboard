@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentBottom="true"
-    android:background="@color/keyboard_white"
     android:scrollbars="none">
     <LinearLayout
         android:id="@+id/keyboard_emoticons_bar_content"
