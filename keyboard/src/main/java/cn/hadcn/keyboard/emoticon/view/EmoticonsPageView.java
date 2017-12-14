@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,6 @@ import cn.hadcn.keyboard.emoticon.EmoticonSetBean;
 import cn.hadcn.keyboard.emoticon.util.EmoticonsKeyboardBuilder;
 import cn.hadcn.keyboard.emoticon.view.EmoticonsAdapter.EmoticonsListener;
 import cn.hadcn.keyboard.utils.Utils;
-import cn.hadcn.keyboard.view.SoftListenLayout;
 
 /**
  * @author chris
@@ -79,11 +77,6 @@ public class EmoticonsPageView extends ViewPager implements EmoticonsAdapter.Emo
                 int start = 0;
                 int end = everyPageMaxSum > emoticonSetSum ? emoticonSetSum : everyPageMaxSum;
 
-                RelativeLayout.LayoutParams gridParams = new RelativeLayout.LayoutParams
-                        (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams
-                                .WRAP_CONTENT);
-                gridParams.addRule(SoftListenLayout.CENTER_VERTICAL);
-
                 int horizontalSpacing = Utils.dip2px(mContext, bean.getHorizontalSpacing());
                 int verticalSpacing = Utils.dip2px(mContext, bean.getVerticalSpacing());
                 int itemHeight = Math.min(
@@ -91,9 +84,9 @@ public class EmoticonsPageView extends ViewPager implements EmoticonsAdapter.Emo
                                 (bean.getRow() - 1) * horizontalSpacing) / bean.getRow(),
                         (mPageHeight - getPaddingTop() - getPaddingBottom() -
                                 (bean.getLine() - 1) * verticalSpacing) / bean.getLine());
+                int paddingTop = (mPageHeight-itemHeight*line-verticalSpacing*line)/2;
 
                 for (int i = 0; i < pageCount; i++) {
-                    RelativeLayout rl = new RelativeLayout(mContext);
                     GridView gridView = new GridView(mContext);
                     gridView.setNumColumns(bean.getRow());
                     gridView.setBackgroundColor(Color.TRANSPARENT);
@@ -127,9 +120,9 @@ public class EmoticonsPageView extends ViewPager implements EmoticonsAdapter.Emo
                     EmoticonsAdapter adapter = new EmoticonsAdapter(mContext, list, bean
                             .isShownName());
                     adapter.setHeight(itemHeight, Utils.dip2px(mContext, bean.getItemPadding()));
+                    gridView.setPadding(0, paddingTop, 0, 0);
                     gridView.setAdapter(adapter);
-                    rl.addView(gridView, gridParams);
-                    emoticonPageViews.add(rl);
+                    emoticonPageViews.add(gridView);
                     adapter.setOnItemListener(this);
 
                     start = everyPageMaxSum + i * everyPageMaxSum;
