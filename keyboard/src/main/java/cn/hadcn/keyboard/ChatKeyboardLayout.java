@@ -72,7 +72,7 @@ public class ChatKeyboardLayout extends SoftHandleLayout implements EmoticonsTab
     private int mLayoutOrderCount = 0;
     private int mChildViewPosition = -1;
     private HadEditText etInputArea;
-    private ViewGroup rlInput;
+//    private ViewGroup rlInput;
     private LinearLayout lyBottomLayout;
     private ImageView btnEmoticon;
     private Button btnSend;
@@ -141,7 +141,7 @@ public class ChatKeyboardLayout extends SoftHandleLayout implements EmoticonsTab
         EmoticonHandler.getInstance(context).loadEmoticonsToMemory();
         LayoutInflater.from(context).inflate(R.layout.keyboard_bar_layout, this);
 
-        rlInput = (ViewGroup) findViewById(R.id.view_keyboard_input_layout);
+//        rlInput = (ViewGroup) findViewById(R.id.view_keyboard_input_layout);
         lyBottomLayout = (LinearLayout) findViewById(R.id.view_keyboard_bottom);
         btnEmoticon = (ImageView) findViewById(R.id.view_keyboard_face_icon);
         leftIconView = (ImageView) findViewById(R.id.view_keyboard_left_icon);
@@ -723,8 +723,8 @@ public class ChatKeyboardLayout extends SoftHandleLayout implements EmoticonsTab
     }
 
     @Override
-    protected void onSoftKeyboardPop(int height) {
-        super.onSoftKeyboardPop(height);
+    protected void OnSoftKeyboardPop(int height) {
+        super.OnSoftKeyboardPop(height);
         btnEmoticon.setSelected(false);
     }
 

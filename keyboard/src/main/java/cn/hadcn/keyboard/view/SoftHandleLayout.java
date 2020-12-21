@@ -114,7 +114,7 @@ public class SoftHandleLayout extends SoftListenLayout {
     }
 
     @Override
-    protected void onSoftKeyboardPop(int height) {
+    protected void OnSoftKeyboardPop(int height) {
         if (height > 0 && height != mAutoViewHeight) {
             mAutoViewHeight = height;
             Utils.setDefKeyboardHeight(mContext, mAutoViewHeight);
@@ -135,7 +135,7 @@ public class SoftHandleLayout extends SoftListenLayout {
     }
 
     @Override
-    protected void onSoftKeyboardClose() {
+    protected void OnSoftKeyboardClose() {
         mKeyboardState = mKeyboardState == KEYBOARD_STATE_BOTH ? KEYBOARD_STATE_FUNC :
                 KEYBOARD_STATE_NONE;
 
